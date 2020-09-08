@@ -1,5 +1,5 @@
 {
-    "name": "claudejanz/yii2-nested-sortable",
+    "name": "sharkom/yii2-nested-sortable-widget",
     "description": "an implementation of nestedSortable2.0",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","nestedSortable2.0"],
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "claudejanz\\yii2nestedSortable\\": ""
+            "sharkom\\yii2nestedSortable\\": ""
         }
     }
 }

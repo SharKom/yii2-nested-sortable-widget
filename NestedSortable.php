@@ -4,7 +4,7 @@
  * @inheritdoc
  */
 
-namespace claudejanz\yii2nestedSortable;
+namespace sharkom\yii2nestedSortable;
 
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -21,9 +21,15 @@ class NestedSortable extends Sortable
 
     public $contentAttribute = 'title';
     public $itemsAttribute = 'pages';
+    public $descriptionAttribute = "type,url";
     public $url = [];
     public $handleOptions = [];
     public $pjaxSuccessId;
+    public $updateAction="";
+    public $deleteAction="";
+    public $options = [
+      "id"=>"NestedSortableSet"
+    ];
     public $clientOptions = [
         'forcePlaceholderSize' => true,
         'handle'               => 'div',
@@ -62,6 +68,7 @@ class NestedSortable extends Sortable
                         data: $('#" . $this->options['id'] . "').nestedSortable('serialize'),
                         dataType: 'json'
                     }).done(function( data ) {
+                        console.log(data) 
                         ".(($this->pjaxSuccessId)?"$.pjax.reload($('#$this->pjaxSuccessId'),{timeout:false});":'')."
                        // if(data)alert(data);
                     });
@@ -83,11 +90,38 @@ class NestedSortable extends Sortable
         $items[] = Html::beginTag($this->clientOptions['listType'], $this->options) . PHP_EOL;
         ArrayHelper::remove($this->options, 'id');
         foreach ($models as $model) {
-            $content = Html::tag($this->clientOptions['handle'], $model->{$this->contentAttribute}, $this->handleOptions);
+
+            $pcontent="<span class='small'>";
+            $spans=explode(",", $this->descriptionAttribute);
+            foreach ($spans as $span) {
+                $pcontent.=$model->{$span};
+                $pcontent.=" - ";
+            }
+            $pcontent=substr($pcontent, 0, -3);
+            $pcontent."</span>";
+
+
+
+            if($this->deleteAction!="") {
+                $pcontent.="<span class='pull-right action'>".Html::a('<span class="glyphicon glyphicon-trash"></span>', [$this->deleteAction, 'id' => $model->id], ['data' => ['confirm' => \Yii::t('app', 'Are you sure you want to delete this item?'),'method' => 'post',],])."</span> ";
+            }
+
+            if($this->updateAction!="") {
+                $pcontent.="<span class='pull-right action'>".Html::a('<span class="glyphicon glyphicon-pencil"></span>', [$this->updateAction, 'id'=>$model->id])."</span> ";
+            }
+
+            $content = Html::tag($this->clientOptions['handle'], $model->{$this->contentAttribute}.$pcontent, $this->handleOptions);
+
             if ($model->{$this->itemsAttribute}) {
+                \Yii::debug("DEBUG". print_r($model->{$this->itemsAttribute}, true));
                 $content .= $this->renderItemsR($model->{$this->itemsAttribute});
             }
-            $options = ArrayHelper::merge($this->itemOptions, ['id' => 'item-' . $model->id]);
+            if($model->nestable!="1") {
+                $options = ArrayHelper::merge($this->itemOptions, ['id' => 'item-' . $model->id, 'class'=>'mjs-nestedSortable-no-nesting']);
+            } else {
+                $options = ArrayHelper::merge($this->itemOptions, ['id' => 'item-' . $model->id]);
+            }
+
             $items[] = Html::tag($this->clientOptions['items'], $content, $options);
         }
 
@@ -106,6 +140,7 @@ class NestedSortable extends Sortable
             $id = $this->options['id'];
         }
         NestedSortableAsset::register($this->getView());
+        NestedAsset::register($this->getView());
         $this->registerClientEvents($name, $id);
         $this->registerClientOptions($name, $id);
     }

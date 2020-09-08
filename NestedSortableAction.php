@@ -1,6 +1,6 @@
 <?php
 
-namespace claudejanz\yii2nestedSortable;
+namespace sharkom\yii2nestedSortable;
 
 use Yii;
 use yii\base\Action;

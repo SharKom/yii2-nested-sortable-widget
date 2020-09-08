@@ -4,7 +4,7 @@
  * @inheritdoc
  */
 
-namespace claudejanz\yii2nestedSortable;
+namespace sharkom\yii2nestedSortable;
 
 use yii\web\AssetBundle;
 
@@ -13,7 +13,7 @@ use yii\web\AssetBundle;
  */
 class NestedSortableAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/nestedSortable2.0';
+    public $sourcePath = '@bower/jquery-nested-sortable/';
     public $js = [
         'jquery.mjs.nestedSortable.js',
     ];

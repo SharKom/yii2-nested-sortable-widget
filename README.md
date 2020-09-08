@@ -1,7 +1,7 @@
 Nested Sortable
 ===============
 
-[![Latest Stable Version](https://poser.pugx.org/claudejanz/yii2-nested-sortable/v/stable.svg)](https://packagist.org/packages/claudejanz/yii2-nested-sortable) [![Total Downloads](https://poser.pugx.org/claudejanz/yii2-nested-sortable/downloads.svg)](https://packagist.org/packages/claudejanz/yii2-nested-sortable) [![Latest Unstable Version](https://poser.pugx.org/claudejanz/yii2-nested-sortable/v/unstable.svg)](https://packagist.org/packages/claudejanz/yii2-nested-sortable) [![License](https://poser.pugx.org/claudejanz/yii2-nested-sortable/license.svg)](https://packagist.org/packages/claudejanz/yii2-nested-sortable)
+[![Latest Stable Version](https://poser.pugx.org/sharkom/yii2-nested-sortable/v/stable.svg)](https://packagist.org/packages/sharkom/yii2-nested-sortable) [![Total Downloads](https://poser.pugx.org/sharkom/yii2-nested-sortable/downloads.svg)](https://packagist.org/packages/sharkom/yii2-nested-sortable) [![Latest Unstable Version](https://poser.pugx.org/sharkom/yii2-nested-sortable/v/unstable.svg)](https://packagist.org/packages/sharkom/yii2-nested-sortable) [![License](https://poser.pugx.org/sharkom/yii2-nested-sortable/license.svg)](https://packagist.org/packages/sharkom/yii2-nested-sortable)
 
 
 an implementation of [nestedSortable2.0](http://ilikenwf.github.io/example.html)
@@ -15,13 +15,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist claudejanz/yii2-nested-sortable "*"
+php composer.phar require --prefer-dist sharkom/yii2-nested-sortable "*"
 ```
 
 or add
 
 ```
-"claudejanz/yii2-nested-sortable": "*"
+"sharkom/yii2-nested-sortable": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -77,7 +77,7 @@ Once the extension is installed, simply use it in your code by  :
 
 In view:
 ```php
-use claudejanz\yii2nestedSortable\NestedSortable;
+use sharkom\yii2nestedSortable\NestedSortable;
 echo NestedSortable::widget([
     'items'         => Page::find()->andWhere(['parent_id'=>null])->all(),
     'url'           => ['pages/save-sortable'],
@@ -92,7 +92,7 @@ public function actions()
 {
     return [
         'save-sortable' => [
-            'class' => 'claudejanz\yii2nestedSortable\NestedSortableAction',
+            'class' => 'sharkom\yii2nestedSortable\NestedSortableAction',
             //'scenario'=>'editable',  //optional
             'modelclass' => Page::className(),
         ],

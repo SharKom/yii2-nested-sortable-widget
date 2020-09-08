@@ -1,0 +1,28 @@
+#NestedSortableSet{
+    list-style-type: none;
+    list-style: none;
+    margin:0px;
+    padding: 0px;
+
+}
+
+#NestedSortableSet li{
+    list-style-type: none;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+#NestedSortableSet li div{
+    margin: 0px;
+    padding: 10px;
+    border: 1px solid #efefef;
+    cursor: move;
+}
+
+#NestedSortableSet li div span{
+    display: block;
+}
+#NestedSortableSet .action{
+   margin-left: 3px;
+}
+
