@@ -1,7 +1,6 @@
 Nested Sortable
 ===============
 
-
 [![Latest Stable Version](https://poser.pugx.org/sharkom/yii2-nested-sortable/v/stable.svg)](https://packagist.org/packages/sharkom/yii2-nested-sortable) [![Total Downloads](https://poser.pugx.org/sharkom/yii2-nested-sortable/downloads.svg)](https://packagist.org/packages/sharkom/yii2-nested-sortable) [![Latest Unstable Version](https://poser.pugx.org/sharkom/yii2-nested-sortable/v/unstable.svg)](https://packagist.org/packages/sharkom/yii2-nested-sortable) [![License](https://poser.pugx.org/sharkom/yii2-nested-sortable/license.svg)](https://packagist.org/packages/sharkom/yii2-nested-sortable)
 
 
