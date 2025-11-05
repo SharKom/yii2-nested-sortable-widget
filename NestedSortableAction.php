@@ -44,7 +44,8 @@ class NestedSortableAction extends Action
             }
 
             $model->{$this->orderBy} = $i;
-            $model->{$this->parentId} = ($value!=0)?$value:null;
+            // Convert empty values and "null" string to NULL for foreign key compatibility
+            $model->{$this->parentId} = (!empty($value) && $value !== 'null') ? $value : null;
             $model->save(false);
             $i++;
         }
