@@ -44,7 +44,7 @@ class NestedSortableAction extends Action
             }
 
             $model->{$this->orderBy} = $i;
-            $model->{$this->parentId} = ($value!=0)?$value:null;
+            $model->{$this->parentId} = ($value !== 'null' && $value != 0) ? $value : null;
             $model->save(false);
             $i++;
         }
